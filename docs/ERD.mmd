@@ -1,0 +1,22 @@
+erDiagram
+    USERS ||--o{ RECIPES : authors
+    USERS ||--o{ COMMENTS : writes
+    USERS ||--o{ RATINGS : gives
+    USERS ||--o{ FAVORITES : saves
+    USERS ||--o{ BOOKMARK_FOLDERS : owns
+    USERS ||--o{ BOOKMARKS : creates
+    USERS ||--o{ NOTIFICATIONS : receives
+    USERS ||--o{ AUDIT_LOGS : generates
+    USERS ||--o{ FOLLOWS : follower
+    USERS ||--o{ FOLLOWS : following
+    RECIPES ||--|{ INGREDIENTS : contains
+    RECIPES ||--|{ RECIPE_STEPS : has
+    RECIPES ||--o{ COMMENTS : receives
+    RECIPES ||--o{ RATINGS : receives
+    RECIPES ||--o{ FAVORITES : saved_as
+    RECIPES ||--o{ BOOKMARKS : bookmarked_as
+    RECIPES ||--o| NUTRITION : has
+    RECIPES ||--o{ RECIPE_MEDIA : has
+    RECIPES ||--o{ RECIPE_TAGS : tagged
+    TAGS ||--o{ RECIPE_TAGS : classifies
+    BOOKMARK_FOLDERS ||--o{ BOOKMARKS : contains

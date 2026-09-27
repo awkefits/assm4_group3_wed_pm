@@ -1,0 +1,9 @@
+flowchart LR
+    Visitor[Visitor] -->|Browse/Search| Web[CookBook PHP Web App]
+    User[Registered User] -->|Login/Profile/Recipes/Community| Web
+    Admin[Administrator] -->|Moderation/Users/Settings| Web
+    Web -->|Prepared SQL| DB[(MySQL Database)]
+    DB -->|Recipes/Users/Ratings/Bookmarks| Web
+    Web -->|Validated images/video| Media[(Upload Storage)]
+    Web -->|Notifications| User
+    Web -->|Share URL| Social[Email / Social Platforms]

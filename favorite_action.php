@@ -1,0 +1,3 @@
+<?php
+declare(strict_types=1);require_once __DIR__.'/includes/functions.php';require_login();if($_SERVER['REQUEST_METHOD']!=='POST')redirect('browse.php');verify_csrf();$rid=(int)($_POST['recipe_id']??0);$uid=(int)current_user()['id'];
+$stmt=db()->prepare('SELECT id FROM favorites WHERE user_id=? AND recipe_id=?');$stmt->execute([$uid,$rid]);$id=$stmt->fetchColumn();if($id){db()->prepare('DELETE FROM favorites WHERE id=?')->execute([$id]);flash('success','Recipe removed from favourites.');audit('FAVORITE_REMOVE',$rid);}else{db()->prepare('INSERT INTO favorites(user_id,recipe_id) VALUES(?,?)')->execute([$uid,$rid]);flash('success','Recipe saved to favourites.');audit('FAVORITE_ADD',$rid);}redirect('recipe.php?id='.$rid);
